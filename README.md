@@ -6,7 +6,7 @@ Module to create a VPC in AWS.
 # Usage
 ```hcl
 module "vpc" {
-  source             = "github.com/alchemy-aws-modules/terraform-aws-vpc"
+  source             = "github.com/tropos-aws-modules/terraform-aws-vpc"
   version            = "0.1"
   name               = "${var.name}"
   environment        = "${var.environment}"
