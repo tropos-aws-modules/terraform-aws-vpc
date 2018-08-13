@@ -279,17 +279,6 @@ resource "aws_route_table_association" "public" {
 }
 
 /**
- * Subnet Groups
- */
-
-resource "aws_db_subnet_group" "default" {
-  description = "Default database subnet group for ${aws_vpc.main.id}"
-  subnet_ids  = ["${aws_subnet.private.*.id}"]
-
-  tags = "${merge(var.tags, map("Name", format("%s-default-db-subnet-group", var.name)))}"
-}
-
-/**
  * Outputs
  */
 
@@ -336,8 +325,4 @@ output "public_rtb_id" {
 // The list of EIPs associated with the private subnets.
 output "private_nat_ips" {
   value = ["${aws_eip.nat.*.public_ip}"]
-}
-
-output "default_db_subnet_group" {
-  value = "${aws_db_subnet_group.default.id}"
 }
